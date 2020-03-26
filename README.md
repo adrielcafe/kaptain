@@ -27,7 +27,7 @@ Given the following project structure:
 * `feature-shared` imports nothing
 
 ### 1. Define destinations
-First, you must list all possible destinations (Activities). Create a `sealed class` that implements the `KaptainDestination` interface.
+First, you must list all possible destinations (Activities) of your app. Create a `sealed class` that implements the `KaptainDestination` interface.
 
 Optionally, you can add arguments to your destination using a `data class`.
 
@@ -55,7 +55,7 @@ class MyApplication : Application() {
 Ideally, you should inject this instance as a **singleton** using a DI library. Check the [sample app](https://github.com/adrielcafe/kaptain/blob/master/sample/src/main/java/cafe/adriel/kaptain/sample/App.kt) for an example using [Koin](https://github.com/InsertKoinIO/koin/).
 
 ### 3. Navigate between activities
-Now you can open any Activity, from any module, by calling `kaptain.sail()`:
+Now you can sail to any Activity, from any module:
 
 ```kotlin
 class FeatureAActivity : AppCompatActivity() {
@@ -71,7 +71,7 @@ class FeatureAActivity : AppCompatActivity() {
 ```
 
 ### 4. Retrieve a destination content
-After arrive at the destination Activity, retrieve it's content by calling `kaptain.logbook()`:
+Through the Kaptain's logbook you can retrieve the destination content:
 
 ```kotlin
 class FeatureBActivity : AppCompatActivity() {
@@ -82,6 +82,24 @@ class FeatureBActivity : AppCompatActivity() {
 
         val importantMessage = kaptain.logbook<Destination.FeatureB>(this)?.message
     }
+}
+```
+
+## Dynamic feature modules
+Kaptain works great with [dynamic features](https://developer.android.com/guide/app-bundle/dynamic-delivery)!
+
+### 1. Add destinations on demand
+You can add/remove destinations at any time:
+
+```kotlin
+kaptain.add<Destination.DynamicFeatureA, DynamicFeatureAActivity>()
+kaptain.remove<Destination.DynamicFeatureB>()
+```
+
+### 2. Make sure the destination exists before sailing
+```kotlin
+if (kaptain.has<Destination.DynamicFeatureA>) {
+    kaptain.sail(this, Destination.DynamicFeatureA)
 }
 ```
 
@@ -98,7 +116,7 @@ allprojects {
 2. Next, add the library to your module:
 ```gradle
 dependencies {
-    implementation "com.github.adrielcafe:kaptain:$currentVersion"
+    implementation "com.github.adrielcafe.kaptain:kaptain:$currentVersion"
 }
 ```
 Current version: [![JitPack](https://img.shields.io/jitpack/v/github/adrielcafe/kaptain.svg?style=flat-square)](https://jitpack.io/#adrielcafe/kaptain)

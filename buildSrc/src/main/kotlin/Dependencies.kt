@@ -5,7 +5,7 @@ internal object Version {
     const val GRADLE_KTLINT = "9.2.1"
     const val GRADLE_VERSIONS = "0.28.0"
 
-    const val KOTLIN = "1.3.70"
+    const val KOTLIN = "1.3.71"
     const val KOIN = "2.1.4"
     const val APP_COMPAT = "1.1.0"
     

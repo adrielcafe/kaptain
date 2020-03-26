@@ -36,4 +36,7 @@ class YachtKaptain internal constructor() : Kaptain {
     fun remove(destination: KClass<out KaptainDestination>) {
         destinations -= destination
     }
+
+    fun has(destination: KClass<out KaptainDestination>) =
+        destinations.containsKey(destination)
 }

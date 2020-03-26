@@ -10,7 +10,7 @@ interface Kaptain {
     companion object {
 
         operator fun invoke(init: Kaptain.() -> Unit = {}): Kaptain =
-            YachtKaptain().apply { init() }
+            YachtKaptain().apply(init)
     }
 }
 
@@ -22,3 +22,6 @@ inline fun <reified D : KaptainDestination, reified A : Activity> Kaptain.add() 
 
 inline fun <reified D : KaptainDestination> Kaptain.remove() =
     (this as YachtKaptain).remove(D::class)
+
+inline fun <reified D : KaptainDestination> Kaptain.has(): Boolean =
+    (this as YachtKaptain).has(D::class)
