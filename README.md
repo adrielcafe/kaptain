@@ -29,7 +29,7 @@ Given the following project structure:
 ### 1. Define destinations
 First, you must list all possible destinations (Activities). Create a `sealed class` that implements the `KaptainDestination` interface.
 
-Optionally, you can attach arguments to your destination using a `data class`.
+Optionally, you can add arguments to your destination using a `data class`.
 
 ```kotlin
 sealed class Destination : KaptainDestination {
@@ -43,7 +43,7 @@ sealed class Destination : KaptainDestination {
 Next, create a new Kaptain instance and associate your destinations with the corresponding Activities. 
 
 ```kotlin
-class App : Application() {
+class MyApplication : Application() {
     
     val kaptain = Kaptain {
         add<Destination.FeatureA, FeatureAActivity>()
