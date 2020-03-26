@@ -18,7 +18,7 @@ import strikt.assertions.isNotNull
 import strikt.assertions.isNull
 
 @RunWith(RobolectricTestRunner::class)
-@Config(sdk = [Build.VERSION_CODES.JELLY_BEAN])
+@Config(sdk = [Build.VERSION_CODES.P])
 class KaptainTest {
 
     private val kaptain = Kaptain {
