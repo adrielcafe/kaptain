@@ -1,0 +1,6 @@
+apply plugin: 'com.android.library'
+apply from: '../android-module.gradle'
+
+dependencies {
+    implementation project(':kaptain')
+}

@@ -1,0 +1,15 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+apply from: '../android-module.gradle'
+
+group = Maven.GROUP_ID
+
+android.testOptions.unitTests {
+    includeAndroidResources true
+}
+
+dependencies {
+    testImplementation TestLib.JUNIT
+    testImplementation TestLib.ROBOLECTRIC
+    testImplementation TestLib.STRIKT
+}

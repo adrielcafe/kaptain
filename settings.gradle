@@ -1,0 +1,3 @@
+rootProject.name='Kaptain'
+
+include ':kaptain', ':sample', ':feature-a', ':feature-b', ':feature-shared'

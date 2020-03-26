@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cafe.adriel.kaptain.sample.feature.b" >
+
+    <application>
+        <activity android:name=".FeatureBActivity"/>
+    </application>
+    
+</manifest>

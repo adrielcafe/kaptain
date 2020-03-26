@@ -1,0 +1,10 @@
+apply plugin: 'com.android.library'
+apply from: '../android-module.gradle'
+
+dependencies {
+    implementation project(':kaptain')
+    implementation project(":feature-shared")
+    
+    implementation ModuleLib.KOIN
+    implementation ModuleLib.APP_COMPAT
+}

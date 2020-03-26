@@ -1,0 +1,30 @@
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath ProjectLib.ANDROID
+        classpath ProjectLib.KOTLIN
+        classpath ProjectLib.KTLINT
+        classpath ProjectLib.VERSIONS
+    }
+}
+
+allprojects {
+    apply plugin: 'org.jlleitschuh.gradle.ktlint'
+    apply plugin: "com.github.ben-manes.versions"
+
+    ktlint {
+        android = true
+    }
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
