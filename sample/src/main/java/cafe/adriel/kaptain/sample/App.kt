@@ -2,7 +2,6 @@ package cafe.adriel.kaptain.sample
 
 import android.app.Application
 import cafe.adriel.kaptain.Kaptain
-import cafe.adriel.kaptain.Kaptain.Companion.add
 import cafe.adriel.kaptain.sample.feature.a.FeatureAActivity
 import cafe.adriel.kaptain.sample.feature.b.FeatureBActivity
 import cafe.adriel.kaptain.sample.feature.shared.Destination

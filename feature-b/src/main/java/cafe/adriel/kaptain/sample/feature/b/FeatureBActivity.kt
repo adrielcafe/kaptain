@@ -3,7 +3,6 @@ package cafe.adriel.kaptain.sample.feature.b
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import cafe.adriel.kaptain.Kaptain
-import cafe.adriel.kaptain.Kaptain.Companion.logbook
 import cafe.adriel.kaptain.sample.feature.shared.Destination
 import kotlinx.android.synthetic.main.activity_feature_b.*
 import org.koin.core.KoinComponent

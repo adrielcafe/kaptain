@@ -2,8 +2,6 @@ package cafe.adriel.kaptain
 
 import android.content.Intent
 import android.os.Build
-import cafe.adriel.kaptain.Kaptain.Companion.add
-import cafe.adriel.kaptain.Kaptain.Companion.logbook
 import cafe.adriel.kaptain.util.TestActivity
 import cafe.adriel.kaptain.util.TestDestination
 import org.junit.Test
@@ -63,7 +61,7 @@ class KaptainTest {
     @Test
     fun `logbook should return the correct destination`() {
         val destinationIntent = Intent(startActivity, TestActivity::class.java)
-            .putExtra(YachtKaptain.EXTRA_DESTINATION, TestDestination.SomePlace("Ahoy!"))
+            .putExtra(Kaptain.EXTRA_DESTINATION, TestDestination.SomePlace("Ahoy!"))
         val destinationActivity = Robolectric
             .buildActivity(TestActivity::class.java, destinationIntent)
             .get()
