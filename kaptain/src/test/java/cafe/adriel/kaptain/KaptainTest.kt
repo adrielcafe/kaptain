@@ -28,8 +28,8 @@ class KaptainTest {
     private val startActivity = Robolectric.buildActivity(TestActivity::class.java).get()
 
     @Test
-    fun `sail should start a new activity`() {
-        kaptain.sail(startActivity, TestDestination.SomePlace("Ahoy!"))
+    fun `navigate should start a new activity`() {
+        kaptain.navigate(startActivity, TestDestination.SomePlace("Ahoy!"))
 
         val intent = shadowOf(startActivity).nextStartedActivity
         val className = shadowOf(intent).intentClass.canonicalName
@@ -38,8 +38,8 @@ class KaptainTest {
     }
 
     @Test
-    fun `sail should start a new activity for result`() {
-        kaptain.sail(startActivity, TestDestination.SomePlace("Ahoy!"), 0x123)
+    fun `navigate should start a new activity for result`() {
+        kaptain.navigate(startActivity, TestDestination.SomePlace("Ahoy!"), 0x123)
 
         val intentForResult = shadowOf(startActivity).nextStartedActivityForResult
         val className = shadowOf(intentForResult.intent).intentClass.canonicalName
@@ -52,21 +52,21 @@ class KaptainTest {
     }
 
     @Test
-    fun `sail should throw an exception if destination wasn't found`() {
+    fun `navigate should throw an exception if destination wasn't found`() {
         expectThrows<KaptainException> {
-            kaptain.sail(startActivity, TestDestination.UnknownPlace)
+            kaptain.navigate(startActivity, TestDestination.UnknownPlace)
         }
     }
 
     @Test
-    fun `logbook should return the correct destination`() {
+    fun `extra should return the correct destination`() {
         val destinationIntent = Intent(startActivity, TestActivity::class.java)
             .putExtra(Kaptain.EXTRA_DESTINATION, TestDestination.SomePlace("Ahoy!"))
         val destinationActivity = Robolectric
             .buildActivity(TestActivity::class.java, destinationIntent)
             .get()
 
-        val destination = kaptain.logbook<TestDestination.SomePlace>(destinationActivity)
+        val destination = kaptain.fromIntent<TestDestination.SomePlace>(destinationActivity)
 
         expectThat(destination) {
             isNotNull()
@@ -75,10 +75,10 @@ class KaptainTest {
     }
 
     @Test
-    fun `logbook should return null if destination wasn't found`() {
+    fun `extra should return null if destination wasn't found`() {
         val destinationActivity = Robolectric.buildActivity(TestActivity::class.java).get()
 
-        val destination = kaptain.logbook<TestDestination.UnknownPlace>(destinationActivity)
+        val destination = kaptain.fromIntent<TestDestination.UnknownPlace>(destinationActivity)
 
         expectThat(destination).isNull()
     }

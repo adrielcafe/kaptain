@@ -22,7 +22,7 @@ class FeatureAActivity : AppCompatActivity(), KoinComponent {
         setContentView(R.layout.activity_feature_a)
 
         vGoToFeatureB.setOnClickListener {
-            kaptain.sail(
+            kaptain.navigate(
                 activity = this,
                 destination = Destination.FeatureB(message = GREETING)
             )

@@ -2,7 +2,8 @@ apply plugin: 'com.android.application'
 apply from: '../android-module.gradle'
 
 dependencies {
-    implementation project(':kaptain')
+//    implementation "com.github.adrielcafe.kaptain:kaptain:1.0.1"
+    implementation project(":kaptain")
     implementation project(":feature-a")
     implementation project(":feature-b")
     implementation project(":feature-shared")

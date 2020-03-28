@@ -16,7 +16,7 @@ class FeatureBActivity : AppCompatActivity(), KoinComponent {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_feature_b)
 
-        kaptain.logbook<Destination.FeatureB>(this)
+        kaptain.fromIntent<Destination.FeatureB>(this)
             ?.message
             ?.let(vMessage::setText)
     }

@@ -55,13 +55,13 @@ class MyApplication : Application() {
 Ideally, you should inject this instance as a **singleton** using a DI library. Check the [sample app](https://github.com/adrielcafe/kaptain/blob/master/sample/src/main/java/cafe/adriel/kaptain/sample/App.kt) for an example using [Koin](https://github.com/InsertKoinIO/koin/).
 
 ### 3. Navigate between activities
-Now you can sail to any Activity, from any module:
+Now you can navigate to any Activity, from any module:
 
 ```kotlin
 class FeatureAActivity : AppCompatActivity() {
 
     fun goToFeatureB() {
-        kaptain.sail(
+        kaptain.navigate(
             activity = this,
             destination = Destination.FeatureB(message = "Ahoy!"),
             requestCode = 0x123 // Optional
@@ -71,7 +71,7 @@ class FeatureAActivity : AppCompatActivity() {
 ```
 
 ### 4. Retrieve a destination content
-Through the Kaptain's logbook you can retrieve the destination content:
+After arrive at your destination, you can retrieve it's content:
 
 ```kotlin
 class FeatureBActivity : AppCompatActivity() {
@@ -80,7 +80,7 @@ class FeatureBActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_feature_b)
 
-        val importantMessage = kaptain.logbook<Destination.FeatureB>(this)?.message
+        val importantMessage = kaptain.fromIntent<Destination.FeatureB>(this)?.message
     }
 }
 ```
@@ -99,7 +99,7 @@ kaptain.remove<Destination.DynamicFeatureB>()
 ### 2. Make sure the destination exists before sailing
 ```kotlin
 if (kaptain.has<Destination.DynamicFeatureA>) {
-    kaptain.sail(this, Destination.DynamicFeatureA)
+    kaptain.navigate(this, Destination.DynamicFeatureA)
 }
 ```
 

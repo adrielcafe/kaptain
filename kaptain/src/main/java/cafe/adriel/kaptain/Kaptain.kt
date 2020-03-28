@@ -20,7 +20,7 @@ class Kaptain(init: Kaptain.() -> Unit) {
     }
 
     @Throws(KaptainException::class)
-    fun sail(activity: Activity, destination: KaptainDestination, requestCode: Int? = null) {
+    fun navigate(activity: Activity, destination: KaptainDestination, requestCode: Int? = null) {
         val destinationClass = destinations[destination::class]?.java
             ?: throw KaptainException("Destination not found -> ${destination::class.qualifiedName}")
 
@@ -32,7 +32,7 @@ class Kaptain(init: Kaptain.() -> Unit) {
             ?: activity.startActivity(destinationIntent)
     }
 
-    inline fun <reified D : KaptainDestination> logbook(activity: Activity): D? =
+    inline fun <reified D : KaptainDestination> fromIntent(activity: Activity): D? =
         activity.intent.getSerializableExtra(EXTRA_DESTINATION) as? D
 
     inline fun <reified D : KaptainDestination, reified A : Activity> add() {
