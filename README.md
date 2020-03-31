@@ -96,7 +96,7 @@ kaptain.add<Destination.DynamicFeatureA, DynamicFeatureAActivity>()
 kaptain.remove<Destination.DynamicFeatureB>()
 ```
 
-### 2. Make sure the destination exists before sailing
+### 2. Make sure the destination exists before navigating
 ```kotlin
 if (kaptain.has<Destination.DynamicFeatureA>) {
     kaptain.navigate(this, Destination.DynamicFeatureA)
