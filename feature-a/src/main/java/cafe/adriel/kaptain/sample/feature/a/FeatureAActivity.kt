@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import cafe.adriel.kaptain.Kaptain
 import cafe.adriel.kaptain.sample.feature.shared.Destination
 import kotlinx.android.synthetic.main.activity_feature_a.*
-import org.koin.core.KoinComponent
-import org.koin.core.inject
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 class FeatureAActivity : AppCompatActivity(), KoinComponent {
 

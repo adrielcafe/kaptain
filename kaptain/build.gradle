@@ -1,8 +1,6 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
 apply from: '../android-module.gradle'
-
-group = Maven.GROUP_ID
+apply plugin: 'maven-publish'
 
 android.testOptions.unitTests {
     includeAndroidResources true
@@ -12,4 +10,17 @@ dependencies {
     testImplementation TestLib.JUNIT
     testImplementation TestLib.ROBOLECTRIC
     testImplementation TestLib.STRIKT
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = Maven.GROUP_ID
+                artifactId = Maven.ARTIFACT_ID
+            }
+        }
+    }
 }

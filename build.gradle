@@ -1,8 +1,8 @@
 buildscript {
     repositories {
         google()
-        jcenter()
-        maven { url "https://plugins.gradle.org/m2/" }
+        mavenCentral()
+        gradlePluginPortal()
     }
     dependencies {
         classpath ProjectLib.ANDROID
@@ -21,7 +21,7 @@ allprojects {
     }
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         maven { url 'https://jitpack.io' }
     }
 }

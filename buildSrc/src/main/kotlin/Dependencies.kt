@@ -1,17 +1,17 @@
 @file:Suppress("Unused", "MayBeConstant", "MemberVisibilityCanBePrivate")
 
 internal object Version {
-    const val GRADLE_ANDROID = "3.6.1"
-    const val GRADLE_KTLINT = "9.2.1"
-    const val GRADLE_VERSIONS = "0.28.0"
+    const val GRADLE_ANDROID = "7.0.0"
+    const val GRADLE_KTLINT = "10.1.0"
+    const val GRADLE_VERSIONS = "0.39.0"
 
-    const val KOTLIN = "1.3.71"
-    const val KOIN = "2.1.4"
-    const val APP_COMPAT = "1.1.0"
-    
+    const val KOTLIN = "1.5.21"
+    const val KOIN = "3.1.2"
+    const val APP_COMPAT = "1.3.1"
+
     const val TEST_JUNIT = "4.13"
     const val TEST_ROBOLECTRIC = "4.3.1"
-    const val TEST_STRIKT = "0.24.0"
+    const val TEST_STRIKT = "0.31.0"
 }
 
 object ProjectLib {
@@ -22,8 +22,7 @@ object ProjectLib {
 }
 
 object ModuleLib {
-    const val KOTLIN = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Version.KOTLIN}"
-    const val KOIN = "org.koin:koin-android:${Version.KOIN}"
+    const val KOIN = "io.insert-koin:koin-android:${Version.KOIN}"
     const val APP_COMPAT = "androidx.appcompat:appcompat:${Version.APP_COMPAT}"
 }
 
